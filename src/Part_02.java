@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class Part_01 {
+public class Part_02 {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
         System.out.println("Source file is: lincoln.txt");
@@ -17,8 +17,14 @@ public class Part_01 {
     }
 
     public static int createSet(File file) throws Exception {
+        // Vowel keywords
+        String text = "Good morning. Have a good class. " +
+                "Have a good visit. Have fun!";
+        // Create a TreeMap to hold words as key and count as value
+        Map<String, Integer> vowelMap = new TreeMap<>();
         // Create a hash set
-        Set<String> set = new HashSet<>();
+        String strText = "";
+        //Set<String> set = new HashSet<>();
         //Read file in
         Scanner input = new Scanner(file);
         while (input.hasNext()) {
@@ -28,14 +34,25 @@ public class Part_01 {
             word = word.replaceAll("[^\\sa-zA-Z0-9]", "");
 
             //add string to set
-            set.add(word.toLowerCase());
+            strText += word;
         }
 
-        //Create treeSet from set
-        TreeSet<String> treeSet = new TreeSet<>(set);
 
-        //Set<String> set = new HashSet<>();
-        System.out.println(treeSet);
-return 0;
+        String[] words = strText.split("[\\s+\\p{P}]");
+        for (String word : words) {
+            String key = word.toLowerCase();
+            if (!key.isEmpty()) {
+                if (!vowelMap.containsKey(key)) {
+                    vowelMap.put(key, 1);
+                } else {
+                    int value = vowelMap.get(key);
+                    value++;
+                    vowelMap.put(key, value);
+                }
+            }
+        }
+
+
+        return 0;
     }
 }
