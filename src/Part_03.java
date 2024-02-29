@@ -2,20 +2,20 @@ import java.io.*;
 import java.util.*;
 
 /* Steps
-* Read Text File
-* Display number of times vowerl is present
-*   (a, e, i, o, u)
-*       Read file
-*       parse through each character
-*       if character matches vowel set
-*           add that vowel with count of 1
-*       else if vowel is already in set
-*           add count +1 for that vowel
-* Print out vowel and count for each vowel present
-*/
+ * Read Text File
+ * Display number of times vowerl is present
+ *   (a, e, i, o, u)
+ *       Read file
+ *       parse through each character
+ *       if character matches vowel set
+ *           add that vowel with count of 1
+ *       else if vowel is already in set
+ *           add count +1 for that vowel
+ * Print out vowel and count for each vowel present
+ */
 
 
-public class Part_02 {
+public class     Part_03 {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
         System.out.println("Source file is: lincoln.txt");
@@ -49,7 +49,7 @@ public class Part_02 {
                     //If yes, check if map contains key, add if doesn't
                     if (!map.containsKey(key)) {
                         map.put(key, 1);
-                    //else get kay value and increment if does contain
+                        //else get kay value and increment if does contain
                     } else {
                         int value = map.get(key);
                         value++;
