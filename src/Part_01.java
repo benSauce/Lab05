@@ -6,7 +6,7 @@ public class Part_01 {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
         System.out.println("Source file is: lincoln.txt");
-        File file = new File("/home/bsauce/IdeaProjects/Lab05/src/lincoln.txt");
+        File file = new File("src/lincoln.txt");
         if (file.exists()) {
             System.out.println("Non duplicate words in ascending order:");
             createSet(file);
