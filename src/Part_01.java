@@ -35,7 +35,8 @@ public class Part_01 {
         TreeSet<String> treeSet = new TreeSet<>(set);
 
         //Set<String> set = new HashSet<>();
-        System.out.println(treeSet);
+        //System.out.println(treeSet);
+        treeSet.forEach(e -> System.out.println(e.toUpperCase()));
 return 0;
     }
 }

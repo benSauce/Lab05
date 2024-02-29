@@ -1,6 +1,19 @@
 import java.io.*;
 import java.util.*;
 
+/* Steps
+* Read Text File
+* Display number of times vowerl is present
+*   (a, e, i, o, u)
+*       Read file
+*       parse through each character
+*       if character matches vowel set
+*           add that vowel with count of 1
+*       else if vowel is already in set
+*           add count +1 for that vowel
+* Print out vowel and count for each vowel present
+*/
+
 
 public class Part_02 {
     public static void main(String[] args) throws Exception {
@@ -8,51 +21,26 @@ public class Part_02 {
         System.out.println("Source file is: lincoln.txt");
         File file = new File("/home/bsauce/IdeaProjects/Lab05/src/lincoln.txt");
         if (file.exists()) {
-            System.out.println("Non duplicate words in ascending order:");
-            createSet(file);
+            System.out.println("Vowels and counts:");
+            createMap(file);
         }
         else {
             System.out.println("File lincoln.txt does not exist");
         }
     }
 
-    public static int createSet(File file) throws Exception {
+    public static int createMap(File file) throws Exception {
         // Vowel keywords
-        String text = "Good morning. Have a good class. " +
-                "Have a good visit. Have fun!";
-        // Create a TreeMap to hold words as key and count as value
-        Map<String, Integer> vowelMap = new TreeMap<>();
-        // Create a hash set
-        String strText = "";
-        //Set<String> set = new HashSet<>();
-        //Read file in
+        String[] vowelArray = {"a", "e", "i", "o", "u"};
+        //Create set from vowelSet
+        Set<String> vowelSet = new HashSet<>(Arrays.asList(vowelArray));
+        int count = 0;
         Scanner input = new Scanner(file);
         while (input.hasNext()) {
-            //Take input make string
             String word = input.next();
-            //Remove punctuation
-            word = word.replaceAll("[^\\sa-zA-Z0-9]", "");
-
-            //add string to set
-            strText += word;
+            if (vowelSet.contains(word))
+                count++;
         }
-
-
-        String[] words = strText.split("[\\s+\\p{P}]");
-        for (String word : words) {
-            String key = word.toLowerCase();
-            if (!key.isEmpty()) {
-                if (!vowelMap.containsKey(key)) {
-                    vowelMap.put(key, 1);
-                } else {
-                    int value = vowelMap.get(key);
-                    value++;
-                    vowelMap.put(key, value);
-                }
-            }
-        }
-
-
-        return 0;
+        return count;
     }
 }
