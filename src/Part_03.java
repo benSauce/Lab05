@@ -1,27 +1,23 @@
 import java.io.*;
 import java.util.*;
 
+
+
 /* Steps
  * Read Text File
- * Display number of times vowerl is present
- *   (a, e, i, o, u)
- *       Read file
- *       parse through each character
- *       if character matches vowel set
- *           add that vowel with count of 1
- *       else if vowel is already in set
- *           add count +1 for that vowel
+ * Parse words
+ * Check if word has been inserted into map before
+ * If not, insert word and set value to 1
+ * If has, retrieve value and increment by 1
  * Print out vowel and count for each vowel present
  */
-
-
 public class     Part_03 {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
         System.out.println("Source file is: lincoln.txt");
         File file = new File("src/lincoln.txt");
         if (file.exists()) {
-            System.out.println("Vowels and counts:");
+            System.out.println("Words and counts");
             createMap(file);
         } else {
             System.out.println("File lincoln.txt does not exist");
@@ -29,10 +25,6 @@ public class     Part_03 {
     }
 
     public static int createMap(File file) throws Exception {
-        // Vowel keywords
-        String[] vowelArray = {"a", "e", "i", "o", "u"};
-        //Create set from vowelArray
-        Set<String> vowelSet = new HashSet<>(Arrays.asList(vowelArray));
         // Create a TreeMap to hold words as key and count as value
         Map<String, Integer> map = new TreeMap<>();
         //assign file to scanner
@@ -40,26 +32,22 @@ public class     Part_03 {
         while (input.hasNext()) {
             //Take input and retrieve word
             String word = input.next();
-            //Parse word by letter
-            for (int i = 0; i < word.length(); i++) {
-                //Assign individual char to key
-                String key = String.valueOf(word.charAt(i));
-                //Check if key is in vowelSet
-                if (vowelSet.contains(key)) {
-                    //If yes, check if map contains key, add if doesn't
-                    if (!map.containsKey(key)) {
-                        map.put(key, 1);
-                        //else get kay value and increment if does contain
-                    } else {
-                        int value = map.get(key);
-                        value++;
-                        map.put(key, value);
-                    }
-                }
+            //make lower case
+            word = word.toLowerCase();
+            //remove punctuations
+            String cleanedWord = word.replaceAll("[^\\sa-zA-Z0-9]", "");
+            //If word hasn't been added, add and set value 1
+            if (!map.containsKey(cleanedWord)) {
+                map.put(cleanedWord, 1);
+                //else get kay value and increment if does contain
+            } else {
+                int value = map.get(cleanedWord);
+                value++;
+                map.put(cleanedWord, value);
             }
         }
         //Print out vowel and count
-        System.out.println(map);
+        map.forEach((k,v) -> System.out.println(( k + " : " + v)));
         return 0;
     }
 }
