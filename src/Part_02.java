@@ -2,7 +2,8 @@
  * CS 2013
  * Lab 5 - Sets and Maps
  * Benjamin Saucedo
- * Use a text file as input. Read the text file. Display the number of each vowel (a, e, i, o, u)  in the file.
+ * Use a text file as input. Read the text file.
+ * Display the number of each vowel (a, e, i, o, u)  in the file.
  */
 
 import java.io.*;
@@ -10,7 +11,7 @@ import java.util.*;
 
 public class Part_02 {
     public static void main(String[] args) throws Exception {
-        Scanner input = new Scanner(System.in);
+        //Assign source file
         System.out.println("Source file is: lincoln.txt");
         File file = new File("src/lincoln.txt");
         if (file.exists()) {

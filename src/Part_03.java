@@ -11,7 +11,7 @@ import java.util.*;
 
 public class     Part_03 {
     public static void main(String[] args) throws Exception {
-        Scanner input = new Scanner(System.in);
+        //Assign source file
         System.out.println("Source file is: lincoln.txt");
         File file = new File("src/lincoln.txt");
         if (file.exists()) {
@@ -22,23 +22,16 @@ public class     Part_03 {
         }
     }
 
-    /* Steps
-     * Read Text File
-     * Parse words
+    /*
+     * createMap
+     * description: Takes input from text file.
+     * Create tree map.
      * Check if word has been inserted into map before
      * If not, insert word and set value to 1
      * If has, retrieve value and increment by 1
-     * Print out vowel and count for each vowel present
-     */
-
-    /*
-     * createMap
-     * description: Takes input from text file. Parse through each word.
-     * Add word to map as the key and track number as value.
      * parameters: File
      * returns: 0, but prints map
-     */
-
+    */
     public static int createMap(File file) throws Exception {
         // Create a TreeMap to hold words as key and count as value
         Map<String, Integer> map = new TreeMap<>();
