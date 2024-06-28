@@ -1,9 +1,17 @@
+/*
+ * CS 2013
+ * Lab 5 - Sets and Maps
+ * Benjamin Saucedo
+ * Use a text file as input. Display Non-duplicate words in ascending order.
+ */
+
 import java.io.*;
 import java.util.*;
 
 
 public class Part_01 {
     public static void main(String[] args) throws Exception {
+        //Create a scanner to intake text file
         Scanner input = new Scanner(System.in);
         System.out.println("Source file is: lincoln.txt");
         File file = new File("src/lincoln.txt");
@@ -16,6 +24,12 @@ public class Part_01 {
         }
     }
 
+    /*
+     * createSet
+     * description: Takes input from text file. Turns it into string and adds to set
+     * parameters: File
+     * returns: 0, but prints set
+     */
     public static int createSet(File file) throws Exception {
         // Create a hash set
         Set<String> set = new HashSet<>();
@@ -37,6 +51,6 @@ public class Part_01 {
         //Set<String> set = new HashSet<>();
         //System.out.println(treeSet);
         treeSet.forEach(e -> System.out.println(e.toUpperCase()));
-return 0;
+        return 0;
     }
 }

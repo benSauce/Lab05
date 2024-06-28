@@ -1,19 +1,12 @@
+/*
+ * CS 2013
+ * Lab 5 - Sets and Maps
+ * Benjamin Saucedo
+ * Use a text file as input. Read the text file. Display the number of each vowel (a, e, i, o, u)  in the file.
+ */
+
 import java.io.*;
 import java.util.*;
-
-/* Steps
-* Read Text File
-* Display number of times vowerl is present
-*   (a, e, i, o, u)
-*       Read file
-*       parse through each character
-*       if character matches vowel set
-*           add that vowel with count of 1
-*       else if vowel is already in set
-*           add count +1 for that vowel
-* Print out vowel and count for each vowel present
-*/
-
 
 public class Part_02 {
     public static void main(String[] args) throws Exception {
@@ -28,6 +21,13 @@ public class Part_02 {
         }
     }
 
+    /*
+     * createMap
+     * description: Takes input from text file. Parse through each character. Check if char is vowel.
+     * If vowel, add to map as the key and track number as value.
+     * parameters: File
+     * returns: 0, but prints map
+     */
     public static int createMap(File file) throws Exception {
         // Vowel keywords
         String[] vowelArray = {"a", "e", "i", "o", "u"};
